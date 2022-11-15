@@ -6,15 +6,15 @@ import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name = "post")
-@Data
-@NoArgsConstructor
-@RequiredArgsConstructor
-public class Post {
-    @Id
-    @Column
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-
-}
+//@Entity
+//@Table(name = "post")
+//@Data
+//@NoArgsConstructor
+//@RequiredArgsConstructor
+//public class Post {
+//    @Id
+//    @Column
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private int id;
+//
+//}

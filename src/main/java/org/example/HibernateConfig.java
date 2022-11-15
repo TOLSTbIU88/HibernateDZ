@@ -9,6 +9,7 @@ public class HibernateConfig {
     public static SessionFactory createSessionFactory() {
         Configuration configuration = new Configuration();
         configuration.configure("hibernate.cfg.xml");
+        configuration.addAnnotatedClass(User1.class);
         StandardServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                 .applySettings(configuration.getProperties()).build();
         return configuration.buildSessionFactory(serviceRegistry);
