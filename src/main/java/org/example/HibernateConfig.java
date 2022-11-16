@@ -10,6 +10,8 @@ public class HibernateConfig {
         Configuration configuration = new Configuration();
         configuration.configure("hibernate.cfg.xml");
         configuration.addAnnotatedClass(User.class);
+        configuration.addAnnotatedClass(Post.class);
+        configuration.addAnnotatedClass(Comment.class);
         StandardServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                 .applySettings(configuration.getProperties()).build();
         return configuration.buildSessionFactory(serviceRegistry);

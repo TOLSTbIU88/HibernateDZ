@@ -7,9 +7,10 @@ import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
-@Table(name = "post")
+@Table(name = "\"post\"")
 @Data
 @NoArgsConstructor
 @RequiredArgsConstructor
@@ -24,5 +25,14 @@ public class Post {
 
     @Column
     private Date created_at = new Date();
+
+    @JoinColumn(name = "user_id",nullable = false)
+    @NonNull
+    @ManyToOne
+    private User user;
+
+    @OneToMany(mappedBy = "post")
+
+    private List<Comment> nComments;
 
 }

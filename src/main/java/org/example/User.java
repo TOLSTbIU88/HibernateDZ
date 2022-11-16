@@ -7,9 +7,10 @@ import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
-@Table(name = "user")
+@Table(name =  "\"user\"")
 @Data
 @NoArgsConstructor
 @RequiredArgsConstructor
@@ -34,6 +35,11 @@ public class User {
 
     @Column
     private Date created_at = new Date();
-    
+
+    @OneToMany(mappedBy = "user")
+    private List<Post> nPosts;
+
+    @OneToMany(mappedBy = "user")
+    private List<Comment> nComments;
 
 }

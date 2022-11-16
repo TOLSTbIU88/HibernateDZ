@@ -9,7 +9,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "comment")
+@Table(name = "\"comment\"")
 @Data
 @NoArgsConstructor
 @RequiredArgsConstructor
@@ -25,4 +25,17 @@ public class Comment {
 
     @Column
     private Date created_at = new Date();
+
+    @JoinColumn(name = "post_id",nullable = false)
+    @NonNull
+    @ManyToOne
+
+    private Post post;
+
+    @JoinColumn(name = "user_id",nullable = false)
+    @NonNull
+    @ManyToOne
+
+    private User user;
+
 }
