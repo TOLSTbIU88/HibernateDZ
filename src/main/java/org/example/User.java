@@ -6,14 +6,15 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
-@Table(name = "user1")
+@Table(name = "user")
 @Data
 @NoArgsConstructor
 @RequiredArgsConstructor
 
-public class User1 {
+public class User {
     @Id
     @Column (unique = true, nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,9 +33,7 @@ public class User1 {
     private String password;
 
     @Column
-
-    private String date;
-
+    private Date created_at = new Date();
     
 
 }
