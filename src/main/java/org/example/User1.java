@@ -35,10 +35,6 @@ public class User1 {
 
     private String date;
 
-
-
-
-
-
+    
 
 }
