@@ -3,6 +3,8 @@ package org.example;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
 
 @Slf4j
 public class Runner {
@@ -26,5 +28,26 @@ public class Runner {
             session.clear();
 
         }
+    }
+
+    private static SessionFactory sessionFactory;
+
+    private Runner() {}
+
+    public static SessionFactory getSessionFactory() {
+        if (sessionFactory == null) {
+            try {
+                Configuration configuration = new Configuration().configure();
+                configuration.addAnnotatedClass(User.class);
+                configuration.addAnnotatedClass(Post.class);
+                configuration.addAnnotatedClass(Comment.class);
+                StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder()
+                        .applySettings(configuration.getProperties());
+                sessionFactory = configuration.buildSessionFactory(builder.build());
+
+            } catch (Exception e) {
+            }
+        }
+        return sessionFactory;
     }
 }
