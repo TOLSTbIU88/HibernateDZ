@@ -7,7 +7,7 @@ import org.hibernate.SessionFactory;
 public class InstDao {
     public void addUSER(String name , String password) {
         try (SessionFactory sessionFactory = HibernateConfig.createSessionFactory();
-                Session session = sessionFactory.openSession()){
+             Session session = sessionFactory.openSession()){
             session.clear();
             session.beginTransaction();
             User user = new User(name,password);
@@ -32,6 +32,10 @@ public class InstDao {
              Session session = sessionFactory.openSession()){
             session.clear();
             session.beginTransaction();
+            Comment comment = new Comment(text,post,user);
+            session.saveOrUpdate(comment);
+            session.getTransaction();
+            session.close();
 
         }
     }
