@@ -11,9 +11,28 @@ public class InstDao {
             session.clear();
             session.beginTransaction();
             User user = new User(name,password);
-            session.save(user);
+            session.saveOrUpdate(user);
             session.getTransaction();
             session.close();
          }
+    }
+    public void addPost(String text , User user) {
+        try (SessionFactory sessionFactory = HibernateConfig.createSessionFactory();
+             Session session = sessionFactory.openSession()){
+            session.clear();
+            session.beginTransaction();
+            Post post  = new Post(text,user);
+            session.saveOrUpdate(post);
+            session.getTransaction();
+            session.close();
+        }
+    }
+    public void addCommit(String text ,Post post, User user) {
+        try (SessionFactory sessionFactory = HibernateConfig.createSessionFactory();
+             Session session = sessionFactory.openSession()){
+            session.clear();
+            session.beginTransaction();
+
+        }
     }
 }
